@@ -1,0 +1,25 @@
+{
+  "name": "memotestfriends",
+  "version": "1.0.0",
+  "description": "Project built as a task for the program [Argentina Programa](https://argentinaprograma.com/) using HTML, Bootstrap, CSS and JavaScript",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+     "cypress:open": "cypress open"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gomezlucas/MemoTest-FRIENDS.git"
+  },
+  "author": "LucasD Gomez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gomezlucas/MemoTest-FRIENDS/issues"
+  },
+  "homepage": "https://github.com/gomezlucas/MemoTest-FRIENDS#readme",
+  "dependencies": {
+    "cypress": "^5.6.0",
+    "http-server": "^0.12.3"
+  }
+}

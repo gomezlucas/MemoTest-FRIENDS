@@ -1,6 +1,6 @@
 # FRIENDS MemoTest
 
-Project built as a task for the program [Argentina Programa](https://argentinaprograma.com/) using HTML, Bootstrap, CSS and JavaScript
+Project built as a task for the program [Argentina Programa](https://argentinaprograma.com/) using HTML, Bootstrap, CSS, JavaScript and Tested with Cypress
 
 # Screens
 

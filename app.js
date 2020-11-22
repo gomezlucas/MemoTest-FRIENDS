@@ -24,8 +24,7 @@ function setGame() {
 
 function handleGame() {
     $boardCards = document.querySelectorAll('.card')
-    console.log($boardCards.length)
-
+ 
     if (cardsSelected.length === 2) {
         desactivatUserTurn()
         compareCards()
@@ -52,8 +51,7 @@ function desactivatUserTurn() {
 
 //Activate User Turn 
 function activateUserTurn() {
-    console.log('entro a activate turn')
-    $boardCards.forEach(card => {
+     $boardCards.forEach(card => {
         card.onclick = function (event) {
             clickOnCards(event.target)
             userTurn(event)
@@ -69,8 +67,7 @@ function userTurn(event) {
     }
 
     cardsSelected.push(event.target.nextElementSibling)
-    console.log(cardsSelected)
-    handleGame()
+     handleGame()
 }
 
 
@@ -78,20 +75,20 @@ function userTurn(event) {
 function compareCards() {
     rounds++
     if (cardsSelected[0].src === cardsSelected[1].src) {
-        setTimeout(() => {
+         setTimeout(() => {
             cardsSelected[0].parentNode.remove()
             cardsSelected[1].parentNode.remove()
             cardsSelected = []
             handleGame()
-        }, 1000);
+        }, 500);
 
     } else {
-        setTimeout(() => {
+       setTimeout(() => {
             cardsSelected[0].previousElementSibling.classList.remove("hide")
             cardsSelected[1].previousElementSibling.classList.remove("hide")
             cardsSelected = []
             activateUserTurn()
-        }, 1000);
+        }, 500);
     }
 
 }
@@ -136,5 +133,3 @@ function shuffleCards(cards) {
     }
     return cards
 }
-
-
