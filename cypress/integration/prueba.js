@@ -1,5 +1,6 @@
 
-const URL = `http://127.0.0.1:5500//`
+ 
+const URL = `http://127.0.0.1:8080/`
 const NUMERO_CARDS = 12
 
 context('memotestfriends', () => {
@@ -33,10 +34,11 @@ context('memotestfriends', () => {
 
 
     describe("Resuelve el juego", () => {
-
+        
         let mapaDePares, listaDePares
-
+        
         it("elige una combinacion erronea", () => {
+            cy.clock();
             cy.get(".card").then(cards => {
                 mapaDePares = obtenerParesDeCuadores(cards.children())
                 listaDePares = Object.values(mapaDePares)
@@ -44,15 +46,19 @@ context('memotestfriends', () => {
                 listaDePares[2][2].click()
             })
             cy.get('.card').should('have.length', NUMERO_CARDS)
+            cy.tick(1000)
+
         })
 
         it("Finaliza el juego", () => {
+            cy.clock();
 
             cy.get('.card').should('have.length', NUMERO_CARDS)
-
+         
             listaDePares.forEach(card => {
                 cy.get(card[0]).click()
                 cy.get(card[2]).click()
+                cy.tick(1000)
             })
 
             cy.get('.card').should('have.length', 0)
