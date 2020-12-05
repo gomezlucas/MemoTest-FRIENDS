@@ -1,5 +1,4 @@
-//Cards
-let $cards = ["card1.jpg", "card2.jpg", "card3.jpg", "card4.jpg", "card5.png", "card6.jpg"]
+let cards = ["card1.jpg", "card2.jpg", "card3.jpg", "card4.jpg", "card5.png", "card6.jpg"]
 let $boardCards = document.querySelectorAll('.card')
 let cardsSelected = []
 let rounds = 0
@@ -7,10 +6,10 @@ let rounds = 0
 setGame()
 handleGame()
 
-// Set Game 
+
 function setGame() {
-    let fullCards = $cards.concat($cards)
-    let cardsSuffled = shuffleCards(fullCards) // array with images
+    let fullCards = cards.concat(cards)
+    let cardsSuffled = shuffleCards(fullCards)
     $boardCards.forEach((card, index) => {
         let node = document.createElement('img')
         node.src = `./images/${cardsSuffled[index]}`
@@ -20,13 +19,11 @@ function setGame() {
     })
 }
 
-// playGame 
-
-function handleGame() {
+ function handleGame() {
     $boardCards = document.querySelectorAll('.card')
  
     if (cardsSelected.length === 2) {
-        desactivatUserTurn()
+        deactivatUserTurn()
         compareCards()
     } else {
         activateUserTurn()
@@ -38,40 +35,33 @@ function handleGame() {
 
 }
 
-
-
-//Desactivate User Turn 
-function desactivatUserTurn() {
+function deactivatUserTurn() {
     $boardCards.forEach(card => {
         card.onclick = function (e) {
         }
     })
 }
 
-
-//Activate User Turn 
 function activateUserTurn() {
      $boardCards.forEach(card => {
         card.onclick = function (event) {
-            clickOnCards(event.target)
+            clickOnCard(event.target)
             userTurn(event)
         }
     })
 }
 
-//userTurn
-function userTurn(event) {
 
+function userTurn(event) {
     if (cardsSelected.includes(event.target.nextElementSibling)) {
         return
     }
-
     cardsSelected.push(event.target.nextElementSibling)
      handleGame()
 }
 
 
-//Compare Cards 
+ 
 function compareCards() {
     rounds++
     if (cardsSelected[0].src === cardsSelected[1].src) {
@@ -93,18 +83,12 @@ function compareCards() {
 
 }
 
-
-//Click on Cards
-function clickOnCards(card) {
-    if (card.classList.contains('hide')) {
-        //      card.parentNode.classList.remove("hide")
-    } else {
+function clickOnCard(card) {
+    if (!card.classList.contains('hide')) {
         card.classList.add("hide")
-    }
+   }
 }
 
-
-// End Game 
 function endGame() {
     document.getElementById('message').innerHTML = `
     <h2 class=" w-100 text-center  " id="endGame_text"> 
@@ -122,8 +106,6 @@ function endGame() {
     }
 }
 
-
-//Algorithm to shuffle Cards
 function shuffleCards(cards) {
     for (let i = cards.length - 1; i > 0; i--) {
         let j = Math.floor(Math.random() * (i + 1))
